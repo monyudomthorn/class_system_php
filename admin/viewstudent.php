@@ -1,5 +1,7 @@
 <?php 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/db.php';
 $user_id = $_SESSION['id'] ?? null;
 $class_id = filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
@@ -13,9 +15,23 @@ if (!isset($_SESSION["id"]) || $_SESSION["id"] == '') {
 if (isset($_GET['delete_id']) && $class_id) {
     $del_id = filter_input(INPUT_GET, 'delete_id', FILTER_VALIDATE_INT);
     if ($del_id) {
-        $del_stmt = $con->prepare("DELETE FROM `tb_students` WHERE `student_id` = ?");
-        $del_stmt->bind_param("i", $del_id);
-        $del_stmt->execute();
+        try {
+            // Delete related attendance logs first to prevent foreign key constraint failure
+            $att_stmt = $con->prepare("DELETE FROM `tb_attendance` WHERE `student_id` = ?");
+            if ($att_stmt) {
+                $att_stmt->bind_param("i", $del_id);
+                $att_stmt->execute();
+            }
+
+            // Delete the student record
+            $del_stmt = $con->prepare("DELETE FROM `tb_students` WHERE `student_id` = ?");
+            if ($del_stmt) {
+                $del_stmt->bind_param("i", $del_id);
+                $del_stmt->execute();
+            }
+        } catch (mysqli_sql_exception $e) {
+            error_log("Failed to delete student: " . $e->getMessage());
+        }
         header("Location: viewstudent.php?class_id=" . $class_id);
         exit;
     }
