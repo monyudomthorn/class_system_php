@@ -1,3 +1,6 @@
 <?php
-require_once "admin/login.php";
+    echo 
+    '
+        <script>window.location.href = "./admin/login.php" </script>
+    '
 ?>

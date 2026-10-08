@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom Style -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Sweet Alert -->
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <main class="container-fluid p-0 min-vh-100">
@@ -21,7 +25,7 @@
                     <div class="brand-icon-box">
                         <i class="bi bi-mortarboard-fill"></i>
                     </div>
-                    <span>EduPulse</span>
+                    <span>Bay Ben</span>
                 </a>
 
                 <!-- User Quick Info -->
@@ -30,7 +34,7 @@
                         <i class="bi bi-person-fill"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <div class="text-white fw-bold small text-truncate">Alex Morgan</div>
+                        <div class="text-white fw-bold small text-truncate"><?= htmlspecialchars($_SESSION['fullname'] ?? 'Admin') ?></div>
                         <div class="d-flex align-items-center gap-1" style="font-size: 0.72rem; color: #10b981;">
                             <span class="d-inline-block rounded-circle bg-success" style="width: 6px; height: 6px;"></span>
                             <span>Super Admin</span>
@@ -57,13 +61,13 @@
                         <i class="bi bi-calendar-check-fill"></i>
                         <span>Attendance</span>
                     </a>
-                    <a class="nav-link" href="#exams">
+                    <!-- <a class="nav-link" href="#exams">
                         <i class="bi bi-file-earmark-bar-graph-fill"></i>
                         <span>Grades & Exams</span>
-                    </a>
+                    </a> -->
                 </nav>
 
-                <div class="sidebar-nav-category">Management</div>
+                <!-- <div class="sidebar-nav-category">Management</div>
                 <nav class="nav flex-column mb-4">
                     <a class="nav-link" href="#fees">
                         <i class="bi bi-credit-card-2-front-fill"></i>
@@ -77,11 +81,11 @@
                         <i class="bi bi-gear-fill"></i>
                         <span>Settings</span>
                     </a>
-                </nav>
+                </nav> -->
 
                 <!-- Sidebar Footer / Logout -->
                 <div class="sidebar-footer">
-                    <a href="login.php" class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center gap-2 py-2" style="border-color: #334155; color: #f87171;">
+                    <a href="logout.php" class="btn btn-outline-danger btn-sm w-100 d-flex align-items-center justify-content-center gap-2 py-2" style="border-color: #334155; color: #f87171;">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Logout</span>
                     </a>

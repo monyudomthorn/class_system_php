@@ -762,4 +762,603 @@ body {
   flex-shrink: 0;
 }
 
+/* =========================================================
+   ULTRA-CLEAN & MINIMALIST STUDENT DIRECTORY TABLE (viewstudent.php)
+   ========================================================= */
+.cool-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.05), 0 1px 2px -1px rgba(16, 24, 40, 0.03);
+  overflow: hidden;
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  transition: border-color var(--transition-fast);
+}
+
+.cool-table-card:hover {
+  border-color: #cbd5e1;
+}
+
+.cool-table-header {
+  padding: 0.85rem 1.25rem;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .cool-table-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cool-table-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cool-title-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 0.45rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.cool-badge-count {
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  letter-spacing: 0.01em;
+}
+
+.cool-search-box {
+  position: relative;
+  min-width: 240px;
+}
+
+.cool-search-box i {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.cool-search-input {
+  width: 100%;
+  padding: 0.45rem 0.85rem 0.45rem 2.25rem;
+  font-size: 0.825rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  background-color: #fafbfc;
+  color: #1e293b;
+  transition: all var(--transition-fast);
+}
+
+.cool-search-input:focus {
+  background-color: #ffffff;
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.05);
+  outline: none;
+}
+
+.cool-btn-add {
+  background: #0f172a;
+  color: #ffffff !important;
+  font-weight: 500;
+  font-size: 0.825rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cool-btn-add:hover {
+  background: #1e293b;
+  color: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+}
+
+/* Minimalist Clean Table */
+.cool-table {
+  width: 100%;
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+.cool-table thead {
+  background: #f8fafc;
+}
+
+.cool-table thead th {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #f8fafc;
+}
+
+.cool-table thead th i {
+  margin-right: 0.3rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.cool-table tbody tr {
+  transition: background-color var(--transition-fast);
+  background-color: #ffffff;
+}
+
+.cool-table tbody tr:not(:last-child) td {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.cool-table tbody tr:hover {
+  background-color: #fafbfc !important;
+}
+
+.cool-table tbody td {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  color: #334155;
+  vertical-align: middle;
+  background-color: transparent;
+}
+
+/* ID Tag */
+.student-id-pill {
+  font-family: inherit;
+  font-size: 0.785rem;
+  font-weight: 600;
+  color: #475569;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.student-id-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #64748b;
+  display: inline-block;
+}
+
+/* Student Avatar & Name */
+.cool-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.student-full-name {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.875rem;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+.student-sub-badge {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+/* Minimalist Gender Pills */
+.gender-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.gender-pill.male {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #dcfce7;
+}
+
+.gender-pill.female {
+  background: #fdf2f8;
+  color: #9d174d;
+  border: 1px solid #fce7f3;
+}
+
+.gender-pill.other {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* Email & Date cells */
+.cool-email {
+  color: #64748b;
+  font-size: 0.825rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cool-email i {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.cool-dob {
+  color: #64748b;
+  font-size: 0.825rem;
+  font-weight: 400;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cool-dob i {
+  color: #94a3b8;
+  font-size: 0.825rem;
+}
+
+/* Action Icon Buttons */
+.cool-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.cool-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 0.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 0.825rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cool-action-btn.edit:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.cool-action-btn.delete:hover {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+/* Empty State */
+.cool-empty-state {
+  padding: 3rem 1.25rem;
+  text-align: center;
+}
+
+.cool-empty-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+/* =========================================================
+   STUDENT FORM & EDIT STYLES (student.php & editstudent.php)
+   ========================================================= */
+.student-form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  box-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.05), 0 1px 2px -1px rgba(16, 24, 40, 0.03);
+  overflow: hidden;
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  transition: all var(--transition-fast);
+}
+
+.student-form-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 20px -4px rgba(15, 23, 42, 0.06);
+}
+
+.student-form-header {
+  padding: 1.15rem 1.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.student-form-body {
+  padding: 1.75rem 1.5rem;
+  background: #ffffff;
+}
+
+.student-form-footer {
+  padding: 1.15rem 1.5rem;
+  background: #fafbfc;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.student-form-footer .btn-group-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Form Section Title */
+.form-section-title {
+  font-size: 0.775rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.form-section-title i {
+  color: var(--primary-color, #4f46e5);
+  font-size: 0.9rem;
+}
+
+/* Custom Form Labels */
+.form-label-custom {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.form-label-custom i {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.form-label-custom .required-star {
+  color: #ef4444;
+  font-weight: 700;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+/* Input Icon Group Wrapper */
+.form-input-wrap {
+  position: relative;
+}
+
+.form-input-wrap .input-icon {
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.form-input-wrap .form-control-custom,
+.form-input-wrap .form-select-custom {
+  padding-left: 2.5rem;
+}
+
+.form-input-wrap:focus-within .input-icon {
+  color: var(--primary-color, #4f46e5);
+}
+
+/* Custom Form Controls */
+.form-control-custom,
+.form-select-custom {
+  width: 100%;
+  padding: 0.625rem 0.95rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+  background-color: #fafbfc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.55rem;
+  transition: all var(--transition-fast);
+  line-height: 1.5;
+}
+
+.form-control-custom:hover,
+.form-select-custom:hover {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+}
+
+.form-control-custom:focus,
+.form-select-custom:focus {
+  background-color: #ffffff;
+  border-color: var(--primary-color, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  outline: none;
+  color: #0f172a;
+}
+
+.form-control-custom::placeholder {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+/* Action Buttons */
+.btn-cancel-modal {
+  padding: 0.55rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0.55rem;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #64748b;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-cancel-modal:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+  box-shadow: 0 1px 3px rgba(239, 68, 68, 0.1);
+}
+
+.btn-add-class {
+  padding: 0.55rem 1.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0.55rem;
+  border: 1px solid transparent;
+  background: #0f172a;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.15);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-add-class:hover {
+  background: #1e293b;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn-add-class:active {
+  transform: translateY(0);
+}
+
+/* Edit Preview Banner in editstudent.php */
+.student-edit-preview-badge {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.65rem;
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.student-preview-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
+  border: 1px solid #e0e7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.student-preview-name {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.925rem;
+  margin-bottom: 0.1rem;
+  line-height: 1.25;
+}
+
+.student-preview-sub {
+  font-size: 0.775rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+
+
+
 
