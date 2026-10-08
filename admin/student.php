@@ -30,16 +30,16 @@ if (file_exists('./Sidebar.php')) {
         $status     = trim($_POST['status'] ?? '');
         
         // echo $first_name, $last_name, $email, $gender, $dob, $status, $class_id;
-        
-        $sql= "INSERT INTO `tb_students`(`student_first_name`, `student_last_name`, `student_gender`, `student_email`, `student_dob`, `student_class`, `student_status`, `student_create`)
-                 VALUES ('$first_name','$last_name','$gender','$email','$dob','$class_id','$status','$user_id')";
-        $res = $con->query($sql);
-
-        if($res === false){
-            die("Insert failed: " . $con->error); 
+        $stmt = $con->prepare("INSERT INTO `tb_students` (`student_first_name`, `student_last_name`, `student_gender`, `student_email`, `student_dob`, `student_class`, `student_status`, `create_by`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        if ($stmt) {
+            $stmt->bind_param("sssssisi", $first_name, $last_name, $gender, $email, $dob, $class_id, $status, $user_id);
+            if ($stmt->execute()) {
+                header("Location: ./viewstudent.php?class_id=" . $class_id);
+                exit();
+            } else {
+                die("Insert failed: " . $stmt->error);
+            }
         }
-        // header("Location: ./classes.php");
-        // exit();
     }
 ?>
 <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">

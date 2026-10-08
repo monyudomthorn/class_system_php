@@ -25,6 +25,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
     $exp_sql = "SELECT s.*, c.class_course, c.class_room 
                 FROM tb_students s 
                 LEFT JOIN tb_class c ON s.student_class = c.class_id 
+                WHERE (s.create_by = $user_id OR c.class_create = $user_id) 
                 ORDER BY s.student_id DESC";
     $exp_res = mysqli_query($con, $exp_sql);
     if ($exp_res) {
@@ -87,30 +88,20 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['add_student_q
 // -------------------------------------------------------------
 // Metric Counts
 // -------------------------------------------------------------
-// 1. Total Students Count (by current user or fallback to total)
-$res_user_stu = mysqli_query($con, "SELECT COUNT(*) AS total_students FROM tb_students WHERE create_by = $user_id");
+// 1. Total Students Count (by current user's users_id: created by user or enrolled in user's class)
+$stu_count_sql = "SELECT COUNT(DISTINCT s.student_id) AS total_students 
+                  FROM tb_students s 
+                  LEFT JOIN tb_class c ON s.student_class = c.class_id 
+                  WHERE (s.create_by = $user_id OR c.class_create = $user_id)";
+$res_user_stu = mysqli_query($con, $stu_count_sql);
 $row_user_stu = $res_user_stu ? mysqli_fetch_assoc($res_user_stu) : null;
 $total_students = (int)($row_user_stu['total_students'] ?? 0);
-$user_filter = "WHERE s.create_by = $user_id";
+$user_filter = "WHERE (s.create_by = $user_id OR c.class_create = $user_id)";
 
-if ($total_students === 0) {
-    // If no students created specifically by this user ID, count and display all students
-    $res_all_stu = mysqli_query($con, "SELECT COUNT(*) AS total_students FROM tb_students");
-    $row_all_stu = $res_all_stu ? mysqli_fetch_assoc($res_all_stu) : null;
-    $total_students = (int)($row_all_stu['total_students'] ?? 0);
-    $user_filter = "";
-}
-
-// 2. Total Classes Count
+// 2. Total Classes Count (by current user's users_id)
 $res_user_cls = mysqli_query($con, "SELECT COUNT(*) AS total_classes FROM tb_class WHERE class_create = $user_id");
 $row_user_cls = $res_user_cls ? mysqli_fetch_assoc($res_user_cls) : null;
 $total_classes = (int)($row_user_cls['total_classes'] ?? 0);
-
-if ($total_classes === 0) {
-    $res_all_cls = mysqli_query($con, "SELECT COUNT(*) AS total_classes FROM tb_class");
-    $row_all_cls = $res_all_cls ? mysqli_fetch_assoc($res_all_cls) : null;
-    $total_classes = (int)($row_all_cls['total_classes'] ?? 0);
-}
 
 // 3. Daily Attendance KPI
 $today_str = date('Y-m-d');
@@ -150,10 +141,17 @@ if ($stu_query) {
 
 // Fetch classes for the Add Student modal
 $modal_classes = [];
-$c_res = mysqli_query($con, "SELECT class_id, class_course, class_room FROM tb_class ORDER BY class_id ASC");
-if ($c_res) {
+$c_res = mysqli_query($con, "SELECT class_id, class_course, class_room FROM tb_class WHERE class_create = $user_id ORDER BY class_id ASC");
+if ($c_res && mysqli_num_rows($c_res) > 0) {
     while ($c = mysqli_fetch_assoc($c_res)) {
         $modal_classes[] = $c;
+    }
+} else {
+    $c_res_all = mysqli_query($con, "SELECT class_id, class_course, class_room FROM tb_class ORDER BY class_id ASC");
+    if ($c_res_all) {
+        while ($c = mysqli_fetch_assoc($c_res_all)) {
+            $modal_classes[] = $c;
+        }
     }
 }
 

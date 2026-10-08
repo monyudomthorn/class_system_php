@@ -34,7 +34,7 @@
                         <i class="bi bi-person-fill"></i>
                     </div>
                     <div class="overflow-hidden">
-                        <div class="text-white fw-bold small text-truncate"><?= htmlspecialchars($_SESSION['fullname'] ?? 'Admin') ?></div>
+                        <div class="text-white fw-bold small text-truncate"><?= htmlspecialchars($_SESSION['fullname'] ?? 'Admin') .'('. ($_SESSION['id'] ?? 'Guest') .')' ?></div>
                         <div class="d-flex align-items-center gap-1" style="font-size: 0.72rem; color: #10b981;">
                             <span class="d-inline-block rounded-circle bg-success" style="width: 6px; height: 6px;"></span>
                             <span>Super Admin</span>
